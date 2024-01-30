@@ -1,0 +1,12 @@
+.Appbar-container{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+
+}
+.Main-title{
+color:black;
+text-align: center;
+}

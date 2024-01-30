@@ -1,0 +1,9 @@
+:root{
+    --background-color:#FFFFFF;
+    --blue-color:##2196f3;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
