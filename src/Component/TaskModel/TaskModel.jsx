@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext } from 'react'
 import {
     Button,
@@ -55,7 +56,7 @@ const {onClose,handleInputChange,taskData,setTaskData,handleAdd}=useContext(Task
           <TextField
             margin="dense"
             label="Due Date"
-            type="datetime-local"
+            type="date"
             fullWidth
             value={taskData.due_date}
             onChange={(e) => handleInputChange('due_date', e.target.value)}
@@ -79,10 +80,10 @@ const {onClose,handleInputChange,taskData,setTaskData,handleAdd}=useContext(Task
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={onClose} color="primary">
+          <Button variant="outlined" onClick={onClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleAdd} color="primary">
+          <Button variant="contained" onClick={handleAdd} color="primary">
             {btntitle}
           </Button>
         </DialogActions>
