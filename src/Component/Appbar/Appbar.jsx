@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AppBar, Toolbar, IconButton, Typography, InputBase, Button, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Logo from '../../assets/ad1f76d2.png';
 import './Appbar.css'
+import TaskModel from '../TaskModel/TaskModel';
+import { TaskApp } from '../../Context';
+
+
 export default function Appbar() {
-    return (
+ const {openmodelfn,isopenmodel}=useContext(TaskApp)
+   
+  return (
+      <>
         <AppBar position="static">
           <Toolbar className='Appbar-container'>
             <Box> 
@@ -22,8 +29,12 @@ export default function Appbar() {
           
             <Button variant="outlined"
             className='Addbtn'
-            startIcon={<AddCircleIcon />}>Add</Button>
+            startIcon={<AddCircleIcon />}
+            onClick={openmodelfn}>Add</Button>
           </Toolbar>
         </AppBar>
+        {isopenmodel&&<TaskModel title={"Add Task"} btntitle="Add"/>}
+        
+</>
       );
 }
