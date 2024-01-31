@@ -1,22 +1,52 @@
 /* eslint-disable react/prop-types */
-import React, { useContext } from 'react'
+import React, { useContext,useEffect } from 'react'
 import {
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
+    Button, Dialog, DialogActions, DialogContent, DialogContentText,DialogTitle,
     TextField,TextareaAutosize,FormControl,InputLabel,Select,MenuItem
   } from '@mui/material';
 import { TaskApp } from '../../Context';
   
 export default function TaskModel({title,btntitle}) {
-const {onClose,handleInputChange,taskData,setTaskData,handleAdd}=useContext(TaskApp);
+const {onClose,editmode,handleInputChange,taskData,setTaskData,handleAdd,handleEdit,setIsOpenmodel}=useContext(TaskApp);
 
+useEffect(() => {
+  if (editmode) {
+    // If editdata is provided, pre-fill the fields
+    setTaskData({
+      id:taskData.id || ``,
+      name: taskData.name || '',
+      description: taskData.description || '',
+      status: taskData.status || '',
+      due_date: taskData.due_date || '',
+      priority: taskData.priority || '',
+    });
+  } else {
+    // If no editdata, reset the fields
+    setTaskData({
+      name: '',
+      description: '',
+      status: '',
+      due_date: '',
+      priority: '',
+    });
+  }
+}, [setTaskData]);
 
+const handleAction=()=>{
+  setIsOpenmodel(true);
+  
+if(editmode){
+ 
+  handleEdit();
+}else{
+  
+  handleAdd();
+}
+
+}
 
     return (
+      <>
         <Dialog open={open} onClose={onClose}>
         <DialogTitle>{title}</DialogTitle>
 
@@ -83,11 +113,12 @@ const {onClose,handleInputChange,taskData,setTaskData,handleAdd}=useContext(Task
           <Button variant="outlined" onClick={onClose} color="primary">
             Cancel
           </Button>
-          <Button variant="contained" onClick={handleAdd} color="primary">
+          <Button variant="contained" onClick={handleAction} color="primary">
             {btntitle}
           </Button>
         </DialogActions>
         
       </Dialog>
+      </>
       );
 }

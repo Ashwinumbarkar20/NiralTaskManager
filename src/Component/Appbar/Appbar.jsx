@@ -9,7 +9,7 @@ import { TaskApp } from '../../Context';
 
 
 export default function Appbar() {
- const {openmodelfn,isopenmodel}=useContext(TaskApp)
+ const {openmodelfn,isopenmodel,editmode}=useContext(TaskApp)
    
   return (
       <>
@@ -25,15 +25,20 @@ export default function Appbar() {
             <h4 className='Main-title'>Task Manager</h4>
             </Box>
     
-            {/* Add Button */}
-          
-            <Button variant="outlined"
+                      
+            <Button variant="contained"
             className='Addbtn'
             startIcon={<AddCircleIcon />}
             onClick={openmodelfn}>Add</Button>
           </Toolbar>
         </AppBar>
-        {isopenmodel&&<TaskModel title={"Add Task"} btntitle="Add"/>}
+        {editmode && isopenmodel ?
+        <TaskModel title={"Edit Task"}  btntitle="Save" /> :
+        isopenmodel &&
+        <TaskModel title={"Add Task"} btntitle="Add" />
+      }
+        
+
         
 </>
       );

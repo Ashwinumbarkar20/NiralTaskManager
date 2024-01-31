@@ -7,7 +7,7 @@ const TaskProvider = ({children}) => {
 const url="https://alltasks.onrender.com/tasks";
 const[alltasks,setAlltasks]=useState([]);
 const[isopenmodel,setIsOpenmodel]=useState(false);
-
+const[editmode,setEditmode]=useState(false);
 const [taskData, setTaskData] = useState({
     name: '',
     description: '',
@@ -30,11 +30,12 @@ const onClose=()=>{
         due_date: '',
         priority: '',
       });
+      setEditmode(false);
 }
 
 const handleAdd=async()=>{
     try {
-               
+              
         const response = await fetch('https://alltasks.onrender.com/tasks', {
           method: 'POST',
           headers: {
@@ -47,13 +48,8 @@ const handleAdd=async()=>{
           throw new Error('Failed to add task');
         }
         getTasks(url);
-        // Parse the response
-       // const newTask = await response.json();
-  
-        // Notify the parent component about the new task
-       // onAdd(newTask);
-  
-        // Reset the form state and close the modal
+         
+        
         setTaskData({
           name: '',
           description: '',
@@ -64,8 +60,47 @@ const handleAdd=async()=>{
         onClose();
       } catch (error) {
         console.error('Error adding task:', error.message);
-        
-      }
+              }
+}
+
+const handleDelete = async (task) => {
+  try {
+    const response = await fetch(`https://alltasks.onrender.com/tasks/${task.id}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete task');
+    }
+    getTasks(url);
+  } catch (error) {
+    console.error('Error deleting task:', error.message);
+  }
+};
+
+
+const handleEdit=async()=>{
+  try {
+    const response = await fetch(`https://alltasks.onrender.com/tasks/${taskData.id}`, {
+      method: 'PUT', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(taskData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to edit task');
+    }
+
+    getTasks(url);
+    onClose();
+  } catch (error) {
+    console.error('Error editing task:', error.message);
+    alert("Unable to Delete , please try again")
+    onClose();
+  }
+  
 }
 
   const handleInputChange = (field, value) => {
@@ -78,7 +113,7 @@ const handleAdd=async()=>{
     const getTasks= async (url)=>{
 const res= await fetch(url);
 const data=await res.json();
-console.log(data)
+
 setAlltasks(data);
     }
 
@@ -87,7 +122,7 @@ setAlltasks(data);
     },[])  
 
     return (
-        <TaskApp.Provider value={{url,taskData,alltasks,handleAdd, onClose,setTaskData,handleInputChange,openmodelfn,isopenmodel,setIsOpenmodel}}>{children}
+        <TaskApp.Provider value={{url,taskData,alltasks,handleAdd,handleDelete,handleEdit, onClose,setTaskData,handleInputChange,openmodelfn,isopenmodel,setIsOpenmodel,editmode,setEditmode}}>{children}
         </TaskApp.Provider>
     );
 }
