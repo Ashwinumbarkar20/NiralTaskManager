@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useContext,useEffect } from 'react'
+import React, { useContext,useEffect, useState } from 'react'
 import {
     Button, Dialog, DialogActions, DialogContent, DialogContentText,DialogTitle,
     TextField,TextareaAutosize,FormControl,InputLabel,Select,MenuItem
@@ -8,7 +8,7 @@ import { TaskApp } from '../../Context';
   
 export default function TaskModel({title,btntitle}) {
 const {onClose,editmode,handleInputChange,taskData,setTaskData,handleAdd,handleEdit,setIsOpenmodel}=useContext(TaskApp);
-
+const[error,setError]=useState(false);
 useEffect(() => {
   if (editmode) {
     // If editdata is provided, pre-fill the fields
@@ -33,6 +33,19 @@ useEffect(() => {
 }, [setTaskData]);
 
 const handleAction=()=>{
+  if (
+    !taskData.name ||
+    !taskData.description ||
+    !taskData.status ||
+    !taskData.due_date ||
+    !taskData.priority
+  ) {
+    // Display an error message or handle the validation failure in your UI
+    console.log()
+    setError(true);
+    return;
+  }
+
   setIsOpenmodel(true);
   
 if(editmode){
@@ -108,7 +121,7 @@ if(editmode){
             </Select>
           </FormControl>
         </DialogContent>
-
+            {error&&(<p>Please Fill in all details</p>)}
         <DialogActions>
           <Button variant="outlined" onClick={onClose} color="primary">
             Cancel
@@ -119,6 +132,7 @@ if(editmode){
         </DialogActions>
         
       </Dialog>
+      
       </>
       );
 }

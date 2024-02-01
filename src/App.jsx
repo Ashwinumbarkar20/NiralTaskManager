@@ -26,10 +26,10 @@ function App() {
         <TableHead className='headersection'>
           <TableRow>
             <TableCell className="header-row" align="left"><span className="header-row">Task Name</span> </TableCell>
-            <TableCell className="header-row" align="left"><span style={{ width: '30%', maxWidth: '30%' }} className="header-row">Description</span></TableCell>
-            <TableCell className="header-row" align="left"><span className="header-row">Priority</span></TableCell>
-            <TableCell className="header-row" align="left"><span className="header-row">Status</span></TableCell>
-            <TableCell className="header-row" align="left"><span className="header-row">Due Date</span> </TableCell>
+            <TableCell sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} className="header-row" align="left"><span style={{ width: '30%', maxWidth: '30%' }} className="header-row">Description</span></TableCell>
+            <TableCell  className="header-row" align="left"><span className="header-row">Priority</span></TableCell>
+            <TableCell  sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} className="header-row" align="left"><span className="header-row">Status</span></TableCell>
+            <TableCell  sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} className="header-row" align="left"><span className="header-row">Due Date</span> </TableCell>
             <TableCell className="header-row" align="center"><span className="header-row">Action</span></TableCell>
           </TableRow>
         </TableHead>

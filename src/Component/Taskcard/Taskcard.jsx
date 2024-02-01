@@ -26,16 +26,13 @@ export default function Taskcard({task}) {
             >
               <TableCell align="left" component="th" scope="row"> {task.name}
               </TableCell>
-              <TableCell style={{width:"30%", maxWidth:"30%"}} align="left">{task.description}</TableCell>
-              <TableCell align="left">{task.priority}</TableCell>
-              <TableCell align="left">{task.status}</TableCell>
-              <TableCell align="left">{task.due_date}</TableCell>
+              <TableCell sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} style={{width:"30%", maxWidth:"30%"}} align="left">{task.description}</TableCell>
+              <TableCell  align="left">{task.priority}</TableCell>
+              <TableCell sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} align="left">{task.status}</TableCell>
+              <TableCell sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} align="left">{task.due_date}</TableCell>
               <TableCell align="left"><div className='btndiv'>
-          <Button variant="outlined" onClick={() => {
-                openEditModel(task)
-               
-              }}><EditIcon/></Button>
-          <Button variant="contained" onClick={()=>handleDelete(task)}><DeleteIcon/></Button>
+          <span className='actionbtn' onClick={() =>{openEditModel(task)}}><EditIcon/></span>
+          <span className='actionbtn' onClick={()=>handleDelete(task)}><DeleteIcon/></span>
         </div></TableCell>
             </TableRow>) : (
       

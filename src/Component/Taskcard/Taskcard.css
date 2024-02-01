@@ -12,3 +12,18 @@
     justify-content: space-around;
     align-items: center;
 }
+.actionbtn{
+    text-align: center;
+    padding: 5px;
+    border:1px solid var(--primary-color);
+    border-radius: 15px;
+    color:var(--primary-color);
+    height:40px;
+    width:40px;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0,0,0,0.7);
+    margin:5px;
+}
+.actionbtn:hover{
+    filter: brightness(0.5);
+}
