@@ -21,10 +21,10 @@ export default function Taskcard({task}) {
     <>
 
 
-    {task ? (<TableRow
+    {task ? (<TableRow className='table-row'
                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="left" component="th" scope="row"> {task.name}
+              <TableCell className=".table-row" align="left" component="th" scope="row"> {task.name}
               </TableCell>
               <TableCell sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} style={{width:"30%", maxWidth:"30%"}} align="left">{task.description}</TableCell>
               <TableCell  align="left">{task.priority}</TableCell>

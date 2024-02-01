@@ -1,14 +1,17 @@
 :root{
     --background-color:#FFFFFF;
     --primary-color:#2196f3;
-}
+    }
 *{
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    
 }
 .header-row{
     font-size: 24px;
     font-weight: bold;
+    background-color: #2196f3;
+    color: white ;
     
 }

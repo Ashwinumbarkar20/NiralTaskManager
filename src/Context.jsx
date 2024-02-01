@@ -34,6 +34,7 @@ const onClose=()=>{
 }
 
 const handleAdd=async()=>{
+  onClose();
     try {
               
         const response = await fetch('https://alltasks.onrender.com/tasks', {

@@ -24,7 +24,7 @@ function App() {
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
         <TableHead className='headersection'>
-          <TableRow>
+          <TableRow className='header-row'>
             <TableCell className="header-row" align="left"><span className="header-row">Task Name</span> </TableCell>
             <TableCell sx={{ display: { xs: 'none', sm: 'none',md:'table-cell',lg:"table-cell",xl:"table-cell" } }} className="header-row" align="left"><span style={{ width: '30%', maxWidth: '30%' }} className="header-row">Description</span></TableCell>
             <TableCell  className="header-row" align="left"><span className="header-row">Priority</span></TableCell>

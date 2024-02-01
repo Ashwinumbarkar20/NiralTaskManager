@@ -1,4 +1,7 @@
-.actionbtn{
+.error{
     padding: 5px;
-    margin: 5px;
+    margin: 10px auto;
+    color: red;
+    text-align: center;;
+    font-weight: 700;
 }

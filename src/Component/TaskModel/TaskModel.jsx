@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useContext,useEffect, useState } from 'react'
+import './TaskModel.css'
 import {
     Button, Dialog, DialogActions, DialogContent, DialogContentText,DialogTitle,
     TextField,TextareaAutosize,FormControl,InputLabel,Select,MenuItem
@@ -121,7 +122,7 @@ if(editmode){
             </Select>
           </FormControl>
         </DialogContent>
-            {error&&(<p>Please Fill in all details</p>)}
+            {error&&(<p className='error'>Please Fill in all details</p>)}
         <DialogActions>
           <Button variant="outlined" onClick={onClose} color="primary">
             Cancel
